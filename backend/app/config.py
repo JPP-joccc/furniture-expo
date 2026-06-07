@@ -19,6 +19,8 @@ class Settings(BaseSettings):
 
     # CORS：生产环境填写正式域名，逗号分隔
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    # 可选：正则匹配多个前端域名（CloudBase 静态托管推荐）
+    cors_origin_regex: str = ""
     # 仅开发/局域网演示时设为 true
     allow_lan_access: bool = False
     # 生产环境关闭 Swagger 文档

@@ -38,6 +38,14 @@ if settings.allow_lan_access:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+elif settings.cors_origin_regex:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origin_regex=settings.cors_origin_regex,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 else:
     app.add_middleware(
         CORSMiddleware,
