@@ -24,7 +24,7 @@
           <p v-if="product.shop_name" class="shop">商家：{{ product.shop_name }}</p>
           <p class="description">{{ product.description }}</p>
 
-          <div class="actions">
+          <div class="actions actions-inline">
             <el-button
               v-if="auth.isCustomer"
               :type="product.is_favorited ? 'warning' : 'default'"
@@ -46,6 +46,35 @@
             </el-button>
           </div>
         </div>
+      </div>
+
+      <div v-if="product" class="actions-bar-mobile">
+        <el-button
+          v-if="auth.isCustomer"
+          :type="product.is_favorited ? 'warning' : 'default'"
+          :icon="product.is_favorited ? StarFilled : Star"
+          class="bar-btn"
+          @click="toggleFavorite"
+        >
+          {{ product.is_favorited ? '已收藏' : '收藏' }}
+        </el-button>
+        <el-button
+          v-if="auth.isCustomer"
+          type="primary"
+          :icon="ChatDotRound"
+          class="bar-btn bar-btn-primary"
+          @click="openInquiry"
+        >
+          立即咨询
+        </el-button>
+        <el-button
+          v-else-if="!auth.isLoggedIn"
+          type="primary"
+          class="bar-btn bar-btn-primary"
+          @click="router.push('/login')"
+        >
+          登录后咨询
+        </el-button>
       </div>
     </template>
 
@@ -116,12 +145,6 @@ onMounted(loadProduct)
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .detail-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
 .carousel-img,
 .placeholder-img img {
   width: 100%;
@@ -145,6 +168,7 @@ onMounted(loadProduct)
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .price {
@@ -169,8 +193,68 @@ onMounted(loadProduct)
   margin-bottom: 24px;
 }
 
-.actions {
+.actions-inline {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+.actions-bar-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .carousel-img,
+  .placeholder-img img {
+    height: 280px;
+  }
+
+  .gallery :deep(.el-carousel__container) {
+    height: 280px !important;
+  }
+
+  .detail-layout {
+    font-size: 1.35rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+  }
+
+  .actions-inline {
+    display: none;
+  }
+
+  .actions-bar-mobile {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0));
+    background: #fff;
+    border-top: 1px solid #e8dfd3;
+    z-index: 90;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .bar-btn {
+    flex: 1;
+    height: 44px;
+  }
+
+  .bar-btn-primary {
+    flex: 2;
+  }
+
+  .page-container {
+    padding-bottom: 72px;
+  }
 }
 </style>

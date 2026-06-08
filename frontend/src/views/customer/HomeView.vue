@@ -145,4 +145,49 @@ onMounted(async () => {
   gap: 24px;
   min-height: 200px;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .categories {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 4px;
+    margin-bottom: 32px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-card {
+    flex: 0 0 auto;
+    min-width: 88px;
+    padding: 16px 20px;
+    font-size: 0.95rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
 </style>

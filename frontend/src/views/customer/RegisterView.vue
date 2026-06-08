@@ -2,7 +2,7 @@
   <div class="auth-page">
     <el-card class="auth-card">
       <h2>注册</h2>
-      <el-form ref="formRef" :model="form" :rules="rules" label-width="80px">
+      <el-form ref="formRef" :model="form" :rules="rules" label-width="80px" class="register-form">
         <el-form-item label="角色" prop="role">
           <el-radio-group v-model="form.role">
             <el-radio value="customer">客户</el-radio>
@@ -140,5 +140,32 @@ async function submit() {
 
 .hint a {
   color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 24px 16px;
+  }
+
+  .auth-card {
+    box-shadow: none;
+    border: none;
+  }
+
+  .register-form :deep(.el-form-item__label) {
+    float: none;
+    display: block;
+    text-align: left;
+    padding: 0 0 6px;
+    line-height: 1.4;
+  }
+
+  .register-form :deep(.el-form-item__content) {
+    margin-left: 0 !important;
+  }
+
+  .register-form :deep(.el-input__wrapper) {
+    min-height: 44px;
+  }
 }
 </style>

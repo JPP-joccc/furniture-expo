@@ -24,7 +24,7 @@
         还没有账号？
         <router-link to="/register">立即注册</router-link>
       </p>
-      <el-divider>演示账号</el-divider>
+      <el-divider class="demo-divider">演示账号</el-divider>
       <p class="demo">客户：customer@demo.com / Demo12345</p>
       <p class="demo">商家：merchant@demo.com / Demo12345</p>
     </el-card>
@@ -103,5 +103,24 @@ async function submit() {
   font-size: 0.85rem;
   color: var(--color-muted);
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 24px 16px;
+  }
+
+  .auth-card {
+    box-shadow: none;
+    border: none;
+  }
+
+  .demo-divider {
+    display: none;
+  }
+
+  .demo {
+    display: none;
+  }
 }
 </style>

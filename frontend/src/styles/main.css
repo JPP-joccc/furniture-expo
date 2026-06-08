@@ -30,6 +30,17 @@ a {
   padding: 24px 20px;
 }
 
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px 12px;
+  }
+
+  .page-title {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+  }
+}
+
 .page-title {
   font-size: 1.75rem;
   font-weight: 600;
